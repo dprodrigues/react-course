@@ -7,13 +7,7 @@ import { PostCard } from "../PostCard";
 export const Posts = ({ posts = [] }) => (
 	<div className="posts">
 		{posts.map((post) => (
-			<PostCard
-				body={post.body}
-				cover={post.cover}
-				id={post.id}
-				key={post.id}
-				title={post.title}
-			/>
+			<PostCard body={post.body} cover={post.cover} id={post.id} key={post.id} title={post.title} />
 		))}
 	</div>
 );
@@ -24,7 +18,7 @@ Posts.propTypes = {
 			body: P.string.isRequired,
 			cover: P.string.isRequired,
 			id: P.number.isRequired,
-			title: P.string.isRequired
+			title: P.string.isRequired,
 		}),
 	),
 };

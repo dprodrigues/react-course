@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 
-import "./styles.css";
-
 import { Posts } from "../../components/Posts";
 import { loadPosts } from "../../utils/load-posts";
 import { Button } from "../../components/Button";
 import { TextInput } from "../../components/TextInput";
+
+import "./styles.css";
 
 export const Home = () => {
 	const [posts, setPosts] = useState([]);
@@ -22,7 +22,6 @@ export const Home = () => {
 	}, []);
 
 	useEffect(() => {
-		// console.log(new Date().toLocaleString("pt-BR"));
 		handleLoadPosts(0, postsPerPage);
 	}, [handleLoadPosts, postsPerPage]);
 
@@ -42,9 +41,7 @@ export const Home = () => {
 
 	const noMorePosts = page + postsPerPage >= allPosts.length;
 	const filteredPosts = searchValue
-		? allPosts.filter((post) => {
-				return post.title.toLowerCase().includes(searchValue.toLowerCase());
-		  })
+		? allPosts.filter((post) => post.title.toLowerCase().includes(searchValue.toLowerCase()))
 		: posts;
 
 	return (
@@ -57,7 +54,7 @@ export const Home = () => {
 
 			{filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
 
-			{filteredPosts.length === 0 && <p>Não existem posts =(</p>}
+			{filteredPosts.length === 0 && <p>Não existem posts =/</p>}
 
 			<div className="button-container">
 				{!searchValue && <Button text="Load more posts" onClick={loadMorePosts} disabled={noMorePosts} />}
